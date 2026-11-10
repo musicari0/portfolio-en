@@ -144,6 +144,11 @@
 
   /* ---------- Perfil: los créditos ---------- */
   .credits { padding: 16px var(--pad) clamp(72px, 12vh, 140px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 48px clamp(24px, 5vw, 80px); }
+  /* En Perfil, la nota del cabezal se alinea con la columna de créditos que describe */
+  @media (min-width: 901px) {
+    #perfil .head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 0 clamp(24px, 5vw, 80px); align-items: end; }
+    #perfil .head p { max-width: 44ch; }
+  }
   .credits .lead { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.22; font-weight: 400; font-variation-settings: "wdth" 88; max-width: 26ch; }
   .credits .lead b { font-weight: 800; }
   .credits dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 44px); border-top: 3px solid var(--black); }
