@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Federico Rodríguez Márquez, sonic identity for spaces</title>
+<meta name="description" content="I design the music of brands and spaces in Caracas. A sonic identity made for each place.">
+<meta property="og:title" content="Federico Rodríguez Márquez, sonic identity for spaces">
+<meta property="og:description" content="Ron Santa Teresa, 5 Continentes, Gran Turismo, SW//TCH Gym, Koga Sounds and P.A.N.">
+<meta property="og:type" content="website">
+<!-- Reemplazar por la URL absoluta de la imagen al publicar -->
+<meta property="og:image" content="og.png">
+<meta name="theme-color" content="#1F3FC4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF; --black: #111111; --grey: #5C5C5C; --line: #D9D9D9;
+    --cobalt: #1F3FC4; --orange: #E8551C;
+    --amber: #D99020; --night: #1B2F5B; --wine: #6B2438; --red: #C8321F; --teal: #0F6B63; --yellow: #F2C230;
+    --f: "Archivo", "Arial Narrow", Helvetica, sans-serif;
+    --pad: clamp(20px, 4vw, 56px);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 64px; scrollbar-color: var(--black) var(--white); }
+  body { background: var(--white); color: var(--black); font-family: var(--f); font-size: 17px; line-height: 1.55; font-variation-settings: "wdth" 100; -webkit-font-smoothing: antialiased; overflow-x: hidden; caret-color: var(--cobalt); }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--black); color: var(--white); }
+  :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+  /* Tipografía de carátula: mismo tipo, anchos y pesos que chocan */
+  .x { font-weight: 900; text-transform: uppercase; line-height: 0.84; letter-spacing: -0.01em; }
+  .cond { font-variation-settings: "wdth" 62; }
+  .wide { font-variation-settings: "wdth" 125; }
+  .light { font-weight: 300; }
+  .notes { font-size: 15px; line-height: 1.5; max-width: 42ch; }
+  .notes b { font-weight: 700; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 28px;
+    min-height: 56px; padding: 16px 22px;
+    font-weight: 800; font-size: 16px; font-variation-settings: "wdth" 88; text-transform: uppercase; letter-spacing: 0.02em;
+    background: var(--white); color: var(--black);
+    transition: background .3s var(--ease), color .3s var(--ease);
+  }
+  .btn svg { width: 22px; height: 22px; flex: none; transition: transform .45s var(--ease); }
+  .btn:hover svg { transform: translateX(6px); }
+  .btn--black { background: var(--black); color: var(--white); }
+  .btn--black:hover { background: var(--cobalt); }
+  .btn--white:hover { background: var(--black); color: var(--white); }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: absolute; inset: 0 0 auto 0; z-index: 30;
+    padding: calc(env(safe-area-inset-top, 0px) + 14px) var(--pad) 14px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    color: var(--white);
+  }
+  nav .name { font-weight: 800; font-variation-settings: "wdth" 70; text-transform: uppercase; font-size: 18px; letter-spacing: 0.01em; min-height: 44px; display: inline-flex; align-items: center; }
+  nav ul { list-style: none; display: flex; gap: 26px; }
+  nav ul a { font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; transition: text-decoration-color .25s; }
+  nav ul a:hover { text-decoration-color: currentColor; }
+
+  /* ---------- Portada ---------- */
+  .cover-hero {
+    background: var(--cobalt); color: var(--white);
+    min-height: 100svh; padding: calc(96px + env(safe-area-inset-top, 0px)) var(--pad) var(--pad);
+    display: grid; grid-template-rows: 1fr auto; grid-template-columns: minmax(0, 1fr); gap: 48px; overflow: hidden; position: relative;
+  }
+  .cover-hero h1 { font-size: clamp(56px, 11.6vw, 176px); max-width: 100%; align-self: end; }
+  .cover-hero h1 span { display: block; }
+  .cover-hero h1 .l2 { color: var(--black); }
+  .cover-hero h1 .l3 { font-size: min(0.79em, 8.9vw); white-space: nowrap; margin-top: 0.16em; }
+  .cover-hero h1 .l4 { font-size: 1.08em; margin-top: 0.06em; }
+  .hero-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 40px; align-items: end; border-top: 3px solid var(--white); padding-top: 20px; }
+  .hero-foot .notes { font-size: clamp(16px, 1.35vw, 19px); max-width: 44ch; }
+  .catalog { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; text-align: right; }
+  .catalog p { font-weight: 700; font-variation-settings: "wdth" 70; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; line-height: 1.3; }
+  .catalog p span { font-weight: 300; }
+
+  /* Entrada: el titular se destapa línea a línea, una sola vez */
+  .js .cover-hero h1 span { clip-path: inset(-0.35em 100% -0.15em 0); }
+  .js.ready .cover-hero h1 span { clip-path: inset(-0.35em -0.1em -0.15em 0); transition: clip-path 1.1s var(--ease); }
+  .js.ready .cover-hero h1 .l2 { transition-delay: .09s; }
+  .js.ready .cover-hero h1 .l3 { transition-delay: .18s; }
+  .js.ready .cover-hero h1 .l4 { transition-delay: .27s; }
+
+  /* ---------- Cabezales ---------- */
+  .head { padding: clamp(72px, 12vh, 140px) var(--pad) clamp(28px, 4vh, 44px); display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .head h2 { font-size: clamp(64px, 13vw, 200px); }
+  .head p { max-width: 30ch; font-size: 18px; font-variation-settings: "wdth" 88; padding-bottom: 0.6em; }
+
+  /* ---------- Clientes: el catálogo ---------- */
+  .shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(56px, 8vw, 104px) clamp(20px, 3vw, 40px); padding: 72px var(--pad) clamp(72px, 10vh, 120px); }
+  .record { display: flex; flex-direction: column; gap: 22px; }
+  .sleeve { position: relative; isolation: isolate; }
+  .disc {
+    position: absolute; z-index: -1; top: 4%; left: 4%; width: 92%; aspect-ratio: 1; border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--label, var(--c)) 0 15%, #0b0b0b 15.5% 16.5%, transparent 17%),
+      repeating-radial-gradient(circle, #151515 0 1px, #222 1px 3px);
+    transform: translateY(-7%); transition: transform .9s var(--ease);
+  }
+  .record:hover .disc, .record:focus-within .disc, .record.out .disc { transform: translateY(-26%); }
+  .cover {
+    aspect-ratio: 1; background: var(--c); color: var(--ink, var(--white));
+    padding: clamp(18px, 2.4vw, 32px); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+  }
+  .cover .top { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; font-variation-settings: "wdth" 70; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; }
+  .cover .top span:last-child { font-weight: 300; }
+  .cover h3 { font-size: var(--size, clamp(52px, 8.6vw, 132px)); }
+  .cover h3 span { display: block; }
+  .cover h3.swiitch span { display: inline; }
+  .liner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .liner .role { font-weight: 800; font-variation-settings: "wdth" 80; text-transform: uppercase; font-size: 16px; letter-spacing: 0.02em; }
+  .liner .notes { max-width: 52ch; color: #262626; }
+  .liner a { font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; text-decoration: underline; text-underline-offset: 5px; width: fit-content; }
+  .liner a svg { width: 14px; height: 14px; }
+
+  .cover.top-set { flex-direction: column-reverse; }
+  .record--open .cover { background: var(--white); color: var(--black); border: 3px solid var(--black); transition: background .3s var(--ease), color .3s var(--ease); }
+  a.sleeve--link { display: block; }
+  a.sleeve--link:hover .cover, a.sleeve--link:focus-visible .cover { background: var(--orange); color: var(--black); }
+  a.sleeve--link:hover .cover-cta svg { transform: translateX(6px); }
+  .cover-cta { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-variation-settings: "wdth" 80; text-transform: uppercase; font-size: clamp(14px, 1.3vw, 17px); letter-spacing: 0.02em; margin-top: 18px; }
+  .cover-cta svg { width: 18px; height: 18px; transition: transform .45s var(--ease); }
+  .record--open .disc { --c: var(--orange); }
+
+  /* ---------- Servicios: el reverso ---------- */
+  .back { background: var(--black); color: var(--white); }
+  .back .head p { color: #CFCFCF; }
+  .tracks { padding: 24px var(--pad) clamp(72px, 12vh, 140px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(24px, 5vw, 80px); }
+  .side h3 { border-bottom: 3px solid var(--white); padding-bottom: 14px; display: flex; align-items: baseline; gap: 0.5em; flex-wrap: wrap; }
+  .side h3 .side-tag { font-size: clamp(15px, 1.3vw, 20px); font-variation-settings: "wdth" 70; font-weight: 700; letter-spacing: 0.04em; }
+  .side h3 .side-name { font-size: clamp(34px, 4vw, 56px); font-weight: 900; }
+  .side ol { list-style: none; counter-reset: t; }
+  .side li { counter-increment: t; display: grid; grid-template-columns: 2.2em minmax(0, 1fr) auto; gap: 6px 14px; padding: 22px 0; border-bottom: 1px solid #3A3A3A; align-items: baseline; }
+  .side li::before { content: counter(t); font-weight: 300; font-variation-settings: "wdth" 70; font-size: 22px; color: #9A9A9A; }
+  .side li h4 { font-weight: 800; font-variation-settings: "wdth" 80; text-transform: uppercase; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.05; }
+  .side li .dur { font-weight: 700; font-variation-settings: "wdth" 70; font-size: 16px; white-space: nowrap; color: var(--orange); }
+  .side li p { grid-column: 2 / -1; font-size: 15px; color: #CFCFCF; max-width: 54ch; }
+
+  /* ---------- Perfil: los créditos ---------- */
+  .credits { padding: 16px var(--pad) clamp(72px, 12vh, 140px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 48px clamp(24px, 5vw, 80px); }
+  .credits .lead { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.22; font-weight: 400; font-variation-settings: "wdth" 88; max-width: 26ch; }
+  .credits .lead b { font-weight: 800; }
+  .credits dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 44px); border-top: 3px solid var(--black); }
+  .credits dl div { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .credits dt { font-weight: 800; font-variation-settings: "wdth" 80; text-transform: uppercase; font-size: 16px; letter-spacing: 0.02em; margin-bottom: 4px; }
+  .credits dd { font-size: 15px; color: #333; }
+
+  /* ---------- Cierre ---------- */
+  .cover-close { background: var(--orange); color: var(--black); padding: clamp(72px, 14vh, 160px) var(--pad) var(--pad); display: flex; flex-direction: column; gap: 44px; }
+  .cover-close h2 { font-size: clamp(52px, 10vw, 156px); }
+  .cover-close h2 span { display: block; }
+  .close-foot { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; border-top: 3px solid var(--black); padding-top: 20px; }
+  footer { background: var(--black); color: var(--white); padding: 22px var(--pad) calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; font-size: 14px; }
+  footer a { text-decoration: underline; text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; }
+  footer span { display: inline-flex; align-items: center; min-height: 44px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .cover-hero h1 span { clip-path: none; }
+    *, *::before, *::after { transition: none !important; }
+  }
+  @media (max-width: 900px) {
+    .shelf { grid-template-columns: 1fr; }
+    .tracks, .credits { grid-template-columns: 1fr; }
+    .tracks { gap: 56px; }
+  }
+  @media (max-width: 640px) {
+    nav ul li:not(:last-child) { display: none; }
+    .hero-foot { grid-template-columns: 1fr; }
+    .catalog { align-items: stretch; text-align: left; }
+    .catalog .btn { width: 100%; }
+    .credits dl { grid-template-columns: 1fr; }
+    .close-foot .btn { width: 100%; }
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ar" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+  <symbol id="out" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+</svg>
+
+<nav aria-label="Main">
+  <a class="name" href="#top">Federico Rodríguez Márquez</a>
+  <ul>
+    <li><a href="#clientes">Clients</a></li>
+    <li><a href="#servicios">Services</a></li>
+    <li><a href="#perfil">Profile</a></li>
+    <li><a href="https://wa.me/584129637780?text=Hi%20Fede%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Write to me</a></li>
+  </ul>
+</nav>
+
+<main>
+<header class="cover-hero" id="top">
+  <h1 class="x" aria-label="The sound of a place isn’t improvised: it’s designed.">
+    <span class="l1 cond">The sound of a place</span>
+    <span class="l2 cond light">isn’t improvised:</span>
+    <span class="l3 wide">it’s designed.</span>
+  </h1>
+  <div class="hero-foot">
+    <p class="notes">I design the music of brands and spaces in Caracas: restaurants, stores, showrooms, gyms and the home of Venezuela’s most premium rum. Each place gets a <b>sonic identity of its own</b>, the one your customer recognizes before seeing your logo.</p>
+    <div class="catalog">
+      <p>Curating since 2019 <span>/</span> 300+ playlists <span>/</span> 6 clients</p>
+      <a class="btn btn--white" href="https://wa.me/584129637780?text=Hi%20Fede%2C%20I%20saw%20your%20portfolio%20and%20I%20want%20to%20tell%20you%20about%20my%20space." target="_blank" rel="noopener">Tell me about your space<svg aria-hidden="true"><use href="#ar"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<section id="clientes" aria-labelledby="cl-t">
+  <div class="head">
+    <h2 id="cl-t" class="x cond">Clients</h2>
+    <p>Five brands, five distinct sounds. Each one is a record in my catalog.</p>
+  </div>
+
+  <div class="shelf">
+    <article class="record" style="--c: var(--black); --ink: var(--amber); --label: var(--amber)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"></span>
+        <div class="cover"><div class="top"><span>FRM 01</span><span>El Consejo, Aragua</span></div>
+          <h3 class="x"><span class="light cond">Ron</span><span class="wide">Santa</span><span class="cond">Teresa</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Sonic identity</p>
+        <p class="notes"><b>I design the sonic identity of Hacienda Santa Teresa:</b> a sonic brand book for the rum house and the audio infrastructure that carries it to every space on the estate.</p>
+        <a href="https://instagram.com/hdasantateresa" target="_blank" rel="noopener">@hdasantateresa<svg aria-hidden="true"><use href="#out"/></svg></a>
+      </div>
+    </article>
+
+    <article class="record" style="--c: var(--yellow); --ink: var(--black)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"></span>
+        <div class="cover top-set"><div class="top"><span>FRM 02</span><span>Brand and events</span></div>
+          <h3 class="x" style="--size: clamp(56px, 10vw, 150px)"><span class="wide">P.A.N.</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Sonic identity for events</p>
+      </div>
+    </article>
+
+    <article class="record" style="--c: var(--red)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"></span>
+        <div class="cover top-set"><div class="top"><span>FRM 03</span><span>Boxing / Running / Lobby</span></div>
+          <h3 class="x swiitch" style="--size: min(7.7vw, 98px); white-space: nowrap"><span class="wide">SW//</span><span class="cond">TCH&nbsp;Gym</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Music curation</p>
+        <p class="notes"><b>I curated more than 300 playlists</b> for the leading gym in Caracas. I designed the structure of each class (warm-up, blocks, switch and stretching), I choose the tracks by sonic profile and I renew the curation every week.</p>
+        <a href="https://instagram.com/swiitchgym" target="_blank" rel="noopener">@swiitchgym<svg aria-hidden="true"><use href="#out"/></svg></a>
+      </div>
+    </article>
+
+    <article class="record" style="--c: var(--wine)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"></span>
+        <div class="cover"><div class="top"><span>FRM 04</span><span>Women’s footwear</span></div>
+          <h3 class="x"><span class="wide">Gran</span><span class="cond light">Turismo</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Sonic identity and curation</p>
+        <p class="notes"><b>I design the sonic identity of a store conceived from kinetic art:</b> a moiré shop window, a multi-brand zone in color and an architectural pause. The music accompanies the selection, holds the pause and reinforces the journey.</p>
+        <a href="https://instagram.com/granturismovzla" target="_blank" rel="noopener">@granturismovzla<svg aria-hidden="true"><use href="#out"/></svg></a>
+      </div>
+    </article>
+
+    <article class="record" style="--c: var(--night)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"></span>
+        <div class="cover "><div class="top"><span>FRM 05</span><span>Las Mercedes</span></div>
+          <h3 class="x" style="--size: clamp(40px, 9vw, 103px)"><span class="wide">5</span><span class="cond">Continentes</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Curation and ambient design</p>
+        <p class="notes"><b>I design the sonic atmosphere of a high-end furniture showroom.</b> A universe inspired by furniture from the world’s most prominent interior design houses: music that accompanies and elevates the buying experience.</p>
+        <a href="https://instagram.com/muebles5continentes" target="_blank" rel="noopener">@muebles5continentes<svg aria-hidden="true"><use href="#out"/></svg></a>
+      </div>
+    </article>
+
+    <article class="record" style="--c: var(--teal)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"></span>
+        <div class="cover"><div class="top"><span>FRM 06</span><span>Jazz and global music</span></div>
+          <h3 class="x" style="--size: clamp(48px, 7.4vw, 112px)"><span class="cond">Koga</span><span class="wide light">Sounds</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Chief curator</p>
+        <p class="notes"><b>This is where the ear was trained.</b> I lead the curation at Koga, a reference for music culture in Caracas with an international community. It is the judgment I then bring to every space.</p>
+        <a href="https://instagram.com/kogasounds" target="_blank" rel="noopener">@kogasounds<svg aria-hidden="true"><use href="#out"/></svg></a>
+      </div>
+    </article>
+
+    <article class="record record--open">
+      <a class="sleeve sleeve--link" href="https://wa.me/584129637780?text=Hi%20Fede%2C%20I%20saw%20your%20portfolio.%20I%20want%20my%20space%20to%20be%20number%2007." target="_blank" rel="noopener" aria-label="Write to me on WhatsApp so your space becomes the next record">
+        <span class="disc" aria-hidden="true"></span>
+        <div class="cover"><div class="top"><span>FRM 07</span><span>Next release</span></div>
+          <h3 class="x" style="--size: clamp(46px, 6.8vw, 104px)"><span class="cond light">Your</span><span class="wide">space</span></h3>
+          <span class="cover-cta">Write to me on WhatsApp<svg aria-hidden="true"><use href="#ar"/></svg></span></div>
+      </a>
+      <div class="liner">
+        <p class="role">To be recorded</p>
+        <p class="notes">The next record can be yours. Tell me what the place is like and how you want it to feel.</p>
+        <a class="btn btn--black" style="text-decoration:none;width:auto" href="https://wa.me/584129637780?text=Hi%20Fede%2C%20I%20saw%20your%20portfolio.%20I%20want%20my%20space%20to%20be%20number%2007." target="_blank" rel="noopener">Write to me on WhatsApp<svg aria-hidden="true" style="width:22px;height:22px"><use href="#ar"/></svg></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="servicios" class="back" aria-labelledby="sv-t">
+  <div class="head">
+    <h2 id="sv-t" class="x cond">Services</h2>
+    <p>The back of the record: what I do and how long each piece runs.</p>
+  </div>
+  <div class="tracks">
+    <div class="side">
+      <h3 class="x"><span class="side-tag cond">Side A</span><span class="side-name cond">Services</span></h3>
+      <ol>
+        <li><h4>Sonic identity design</h4><span class="dur">2–3 wks</span><p>I create the brand’s musical DNA from scratch: an audit of the space, sonic profiles by zone and time of day, a base curation and a certification plaque. One-time payment.</p></li>
+        <li><h4>Ongoing curation</h4><span class="dur">Monthly</span><p>Updates every week, rotation based on performance, control of listening fatigue and adjustments based on what you see on the floor.</p></li>
+        <li><h4>Music consulting</h4><span class="dur">1 wk</span><p>For brands that already have music and want an outside ear. I audit what plays today, identify what works and deliver a clear action plan.</p></li>
+        <li><h4>Sound design for spaces</h4><span class="dur">Per project</span><p>Retail, hospitality, restaurants and experience spaces: curation, integration with your audio system and atmosphere by time of day.</p></li>
+      </ol>
+    </div>
+    <div class="side">
+      <h3 class="x"><span class="side-tag cond">Side B</span><span class="side-name cond light">How I work</span></h3>
+      <ol>
+        <li><h4>Call</h4><span class="dur">20 min</span><p>You tell me about the space, the audience and how you want it to feel. The first conversation is free.</p></li>
+        <li><h4>Space audit</h4><span class="dur">On site</span><p>I walk the place, its zones and its hours, and listen to what plays there today.</p></li>
+        <li><h4>Identity delivery</h4><span class="dur">3 wks</span><p>You receive the sonic identity ready to play in your space.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="perfil" aria-labelledby="pf-t">
+  <div class="head">
+    <h2 id="pf-t" class="x cond">Profile</h2>
+    <p>The credits: who is behind each record.</p>
+  </div>
+  <div class="credits">
+    <div>
+      <p class="lead"><b>Federico Rodríguez Márquez.</b> Sonic identity designer, communications graduate and audiovisual producer. I treat sound as a brand decision, and my judgment comes from jazz, the genre that demands the most trained ear.</p>
+    </div>
+    <dl>
+      <div><dt>Musical training</dt><dd>Grade 9 in classical guitar and grade 8 in electric guitar, Yamaha Music Foundation.</dd></div>
+      <div><dt>Audiovisual direction</dt><dd>Film direction, videography, cinematography, production, post-production in Premiere Pro and DaVinci Resolve.</dd></div>
+      <div><dt>Community</dt><dd>I was part of the organic growth of Koga Sounds (@kogasounds) from its beginnings.</dd></div>
+      <div><dt>Education</dt><dd>Social Communication, Audiovisual track, UCAB. IMG Academy, Bradenton, Florida.</dd></div>
+      <div><dt>Digital strategy</dt><dd>Growth, acquisition funnels and niche audiences in service of the brand.</dd></div>
+      <div><dt>Base</dt><dd>Caracas. I work in Spanish and English.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="cover-close" id="contacto" aria-labelledby="ct-t">
+  <h2 id="ct-t" class="x" aria-label="It’s time your space sounded as good as it looks."><span class="cond">It’s time</span><span class="cond light">your space</span><span class="wide" style="font-size: min(1em, 13.5vw)">sounded</span><span class="cond">as good as it looks.</span></h2>
+  <div class="close-foot">
+    <p class="notes"><b>A direct reply in under 24 hours.</b> From Caracas, on WhatsApp.</p>
+    <a class="btn btn--black" href="https://wa.me/584129637780?text=Hi%20Fede%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Let’s talk on WhatsApp<svg aria-hidden="true"><use href="#ar"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Federico Rodríguez Márquez</span>
+  <a href="https://instagram.com/musicari0" target="_blank" rel="noopener">@musicari0</a>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('ready'); }); });
+  // En pantallas táctiles no hay hover: el disco sale al entrar la carátula en pantalla.
+  if (!matchMedia('(hover: none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.target.classList.toggle('out', e.intersectionRatio > 0.6); });
+  }, { threshold: [0, 0.6, 1] });
+  document.querySelectorAll('.record').forEach(function (r) { io.observe(r); });
+})();
+</script>
+</body>
+</html>
