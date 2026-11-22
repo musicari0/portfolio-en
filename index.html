@@ -19,7 +19,7 @@
   :root {
     --white: #FFFFFF; --black: #111111; --grey: #5C5C5C; --line: #D9D9D9;
     --cobalt: #1F3FC4; --orange: #E8551C;
-    --amber: #D99020; --bottle: #0F3B2D; --gold: #CDA55A; --midnight: #152340; --bone: #F2EBDD; --bone-dim: #CFC6B4; --brass: #D7A24A; --night: #1B2F5B; --wine: #6B2438; --red: #C8321F; --teal: #0F6B63; --yellow: #F2C230; --lime: #D4F56A; --pink: #FF3D8B;
+    --amber: #D99020; --bottle: #0F3B2D; --gold: #CDA55A; --midnight: #152340; --bone: #F2EBDD; --bone-dim: #CFC6B4; --brass: #D7A24A; --night: #1B2F5B; --wine: #6B2438; --red: #C8321F; --teal: #0F6B63; --yellow: #F2C230; --cacao: #281104; --electric: #00F0FF; --lime: #D4F56A; --pink: #FF3D8B;
     --f: "Archivo", "Arial Narrow", Helvetica, sans-serif;
     --pad: clamp(20px, 4vw, 56px);
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -183,9 +183,6 @@
   .moments b { font-weight: 800; font-variation-settings: "wdth" 80; text-transform: uppercase; font-size: 13px; letter-spacing: .04em; padding-top: 2px; }
   .goal-line { margin-top: 14px; font-weight: 700; font-size: 16px; }
   .goal-line span { display: inline-block; background: var(--black); color: var(--white); padding: 2px 8px; margin-right: 8px; font-size: 12px; font-variation-settings: "wdth" 80; text-transform: uppercase; letter-spacing: .05em; vertical-align: 2px; }
-  #sectores .shelf { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  @media (min-width: 1001px) { #sectores .cover { width: 84%; } #sectores .disc { left: 22%; width: 74%; } }
-  @media (max-width: 1000px) { #sectores .shelf { grid-template-columns: 1fr; } #sectores .cover { width: 56%; } #sectores .disc { left: 26%; width: 56%; } }
   .cover.top-set { flex-direction: column-reverse; }
   .record--open .cover { background: var(--pink); color: var(--black); border: 0; transition: background .3s var(--ease), color .3s var(--ease); }
   .record--open .cover-cta { align-self: flex-start; background: var(--black); color: var(--lime); padding: 2.6cqi 4cqi; }
@@ -262,6 +259,36 @@
     .credits dl { grid-template-columns: 1fr; }
     .close-foot .btn { width: 100%; }
   }
+  /* Sectores: 2 x 2. Cada par comparte renglones para que se lea de lado a lado. */
+  #sectores .shelf { row-gap: 0; padding-top: 40px; }
+  #sectores .record { gap: 14px; padding-bottom: clamp(56px, 8vw, 104px); }
+  #sectores .record:last-child { padding-bottom: 0; }
+  #sectores .sleeve { margin-bottom: 10px; }
+  /* El margen va en % de la funda (7% de la carátula): con cqi se mediría contra la ventana y achicaría los títulos. */
+  #sectores .cover { padding: 4.2%; }
+  #sectores .cover .top { font-size: clamp(11px, 5.2cqi, 17px); }
+  #sectores .head p { text-wrap: pretty; }
+  #sectores .liner { gap: 14px; max-width: 36rem; }
+  #sectores .liner .role { font-size: clamp(19px, 1.7vw, 25px); line-height: 1.12; text-wrap: balance; }
+  #sectores .liner .notes { font-size: 17px; max-width: none; text-wrap: pretty; }
+  #sectores .moments { max-width: none; margin-top: 4px; align-content: start; }
+  #sectores .moments li { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); padding: 12px 0; font-size: 16px; }
+  #sectores .moments b { font-size: 14px; line-height: 1.35; }
+  #sectores .goal-line { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: baseline; margin-top: 4px; font-size: 17px; line-height: 1.4; }
+  #sectores .goal-line span { margin: 0; font-size: 13px; vertical-align: baseline; }
+  @media (max-width: 1180px) { #sectores .moments li { grid-template-columns: minmax(0, 1fr); gap: 3px; } }
+  @media (min-width: 701px) {
+    #sectores .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #sectores .record:nth-last-child(-n+2) { padding-bottom: 0; }
+    @supports (grid-template-rows: subgrid) {
+      #sectores .record { display: grid; grid-row: span 8; grid-template-rows: subgrid; }
+      #sectores .liner { grid-row: span 7; grid-template-rows: subgrid; }
+      #sectores .moments { grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+      #sectores .moments li { align-content: start; }
+    }
+  }
+  @media (max-width: 900px) and (min-width: 701px) { #sectores .cover { width: 70%; padding: 4.9%; } #sectores .disc { left: 34%; width: 63%; } }
+  @media (max-width: 640px) { #sectores .cover { padding: 4.5%; } }
   /* Cursor: un vinilo que gira. Solo con mouse; en táctil no existe. */
   @media (hover: hover) and (pointer: fine) {
     html.has-vc, html.has-vc * { cursor: none !important; }
@@ -414,7 +441,7 @@
 <section id="sectores" aria-labelledby="se-t">
   <div class="head">
     <h2 id="se-t" class="x cond">Sectors</h2>
-    <p>Three kinds of space, three different problems. Sound solves part of each one.</p>
+    <p>Four kinds of space, four different problems. Sound solves part of each one.</p>
   </div>
   <div class="shelf">
     <article class="record" style="--c: var(--midnight); --ink: var(--brass); --label: var(--brass); --label-ink: var(--midnight)">
@@ -436,7 +463,7 @@
     </article>
     <article class="record" style="--c: var(--lime); --ink: var(--cobalt); --label: var(--cobalt); --label-ink: var(--lime)">
       <div class="sleeve"><span class="disc" aria-hidden="true"><span class="vinyl" data-l="Malls" style="--lag:-9s"></span></span>
-        <div class="cover top-set"><div class="top"><span>Sector 02</span><span>Retail and leisure</span></div>
+        <div class="cover"><div class="top"><span>Sector 02</span><span>Retail and leisure</span></div>
           <h3 class="x" style="--size: 19cqi"><span class="cond light">Shopping</span><span class="cond">malls</span></h3></div>
       </div>
       <div class="liner">
@@ -466,6 +493,23 @@
           <li><b>Staff areas</b><span>Music for long shifts.</span></li>
         </ul>
         <p class="goal-line"><span>Goal</span>A calmer wait and a brand that feels caring.</p>
+      </div>
+    </article>
+    <article class="record" style="--c: var(--cacao); --ink: var(--electric); --label: var(--electric); --label-ink: var(--cacao)">
+      <div class="sleeve"><span class="disc" aria-hidden="true"><span class="vinyl" data-l="Restaurants" style="--lag:-22s"></span></span>
+        <div class="cover"><div class="top"><span>Sector 04</span><span>Food and drink</span></div>
+          <h3 class="x" style="--size: 17cqi"><span class="cond">Restaurants</span></h3></div>
+      </div>
+      <div class="liner">
+        <p class="role">Diners decide on another round</p>
+        <p class="notes"><b>Music is on the menu too.</b> Food brings them in. The atmosphere makes them stay, order more and come back.</p>
+        <ul class="moments">
+          <li><b>Lunch</b><span>A lively pace that turns tables without rushing.</span></li>
+          <li><b>Dinner</b><span>A slow tempo that invites dessert and coffee.</span></li>
+          <li><b>Bar</b><span>Energy builds and the next round orders itself.</span></li>
+          <li><b>Waiting for a table</b><span>The wait turns into the first drink.</span></li>
+        </ul>
+        <p class="goal-line"><span>Goal</span>Higher checks and guests who book again.</p>
       </div>
     </article>
   </div>
